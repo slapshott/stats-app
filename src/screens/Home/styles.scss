@@ -9,85 +9,33 @@
   overflow-y: auto;
   overflow-x: hidden;
 
-  .ticket-container {
-    width: 510px;
-    height: 600px;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: rgba(255, 174, 174, 0.60);
+  .stats-button {
+    width: 150px;
+    height: 40px;
+    background-color: orange;
+    border-radius: 6px;
   }
 
-  .right-container {
-    height: 600px;
+  .sort-button {
+    background-color: blue;
+    width: 60px;
+    height: 20px;
+    border-radius: 6px;
+  }
+
+  .countries-container {
+    font-family: $fonts-regular;
+    margin-left: 20px;
+    height: 60%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-left: 30px;
-  }
+    align-items: center;
+    justify-content: center;
+    background-color: red;
 
-  .margin5 {
-    margin: 0px 5px;
-  }
-
-  .clock {
-    font: 20px $fonts-regular;
-  }
-
-  .bet-row {
-    display: flex;
-    align-items: flex-end;
-  }
-
-  .margin-top50 {
-    margin-top: 50px;
-  }
-
-  .margin-top20 {
-    margin-top: 20px;
-  } 
-
-  .bet-value {
-    font: 13px $fonts-regular;
-    margin-left: 3px;
-  }
-
-  .comments-title {
-    font: 18px $fonts-bold;
-  }
-
-  .comments-container {
-    margin-top: 50px;
-  }
-
-  .comment {
-    font: 14px $fonts-regular;
-  }
-
-  .selected-comment {
-    color: blue;
-    font: 16px $fonts-bold
-  }
-}
-
-@media(max-width: 1201px) {
-  .home-main-container {
-    .ticket-container {
-      width: 390px;
-      height: 500px;
-    }
-  }
-
-}
-
-@media(max-width: 1001px) {
-  .home-main-container {
-    .ticket-container {
-      width: 380px;
-      height: 450px;
+    .element {
+      font-family: $fonts-bold;
+      cursor: pointer;
     }
   }
 
