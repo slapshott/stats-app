@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'bold';
+  src: local('CorsaBold'), url('./assets/fonts/CorsaGrotesk-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'medium';
+  src: local('CorsaMedium'), url('./assets/fonts/CorsaGrotesk-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'regular';
+  src: local('CorsaRegular'), url('./assets/fonts/CorsaGrotesk-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'light';
+  src: local('CorsaLight'), url('./assets/fonts/CorsaGrotesk-Light.ttf') format('truetype');
+}
+
+
+body {
+  margin: 0;
+  font-family: 'light', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

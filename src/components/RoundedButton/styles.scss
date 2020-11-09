@@ -1,0 +1,50 @@
+@import '../../vars.scss';
+
+.rounded-button-container {
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 1px 4px #003470;
+  border-radius: 50%;
+  font: 16px $fonts-regular;
+  cursor: pointer;
+}
+
+.rounded-button-pressed {
+  color: white;
+  background-color: #0077FF
+}
+
+.rounded-button-disabled {
+  background-color: #D8D8D8;
+  box-shadow: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font: 16px $fonts-regular;
+  cursor: pointer;
+}
+
+.raised {
+  width: 100%;
+}
+
+@media(max-width: 1201px) {
+  .rounded-button-container {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media(max-width: 1001px) {
+  .rounded-button-container {
+    width: 30px;
+    height: 30px;
+  }
+}

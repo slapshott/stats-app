@@ -1,0 +1,1 @@
+export { makeGetComments } from './selector'

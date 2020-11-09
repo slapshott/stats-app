@@ -1,0 +1,13 @@
+@import 'fonts';
+
+$fonts-bold: 'bold';
+$fonts-medium: 'medium';
+$fonts-regular: 'regular';
+$fonts-light: 'light';
+$fonts-light-italic: 'light-italic';
+$fonts-medium-italic: 'medium-italic';
+$fonts-thin: 'thin';
+
+@mixin basicShadow {
+  box-shadow: 0px 0px 5px 0px $shadowColor;
+}
