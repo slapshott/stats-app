@@ -16,27 +16,42 @@
     border-radius: 6px;
   }
 
-  .sort-button {
-    background-color: blue;
-    width: 60px;
-    height: 20px;
-    border-radius: 6px;
-  }
-
   .countries-container {
     font-family: $fonts-regular;
     margin-left: 20px;
     height: 60%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     background-color: red;
-
+    .countries-title {
+      background-color: blue;
+      display: flex;
+      justify-content: center;
+      font: 22px $fonts-medium;
+    }
     .element {
-      font-family: $fonts-bold;
+      font-family: $fonts-regular;
       cursor: pointer;
     }
+  }
+  .detailed-info {
+    height: 50%;
+    margin-left: 10px;
+    .detailed-button {
+      width: 120px;
+      height: 30px;
+      border-radius: 6px;
+      margin-top: 20px;
+    }
+  }
+
+
+  .sort-button {
+    background-color: blue;
+    width: 60px;
+    height: 20px;
+    border-radius: 6px;
+    margin-top: 10px;
   }
 
 }

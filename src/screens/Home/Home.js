@@ -1,41 +1,20 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { getStats } from '../../actions'
-import { RoundedButton } from '../../components'
-import moment from 'moment'
+import { RoundedButton, Details, Modal } from '../../components'
 import './styles.scss'
 
 const Home = (props) => {
   const [countryInfo, setInfo] = useState('')
   const [sorted, setSort] = useState(false)
+  const [details, setDetails] = useState(false)
 
   const setCountryInfo = (c) => {
-    const infoKeys = Object.keys(c)
-    const infoValues = Object.values(c)
-    return (
-      <div>
-        {infoKeys.map((key, i) => {
-          if (key === 'Premium') return
-          if (key === 'Date') {
-            return (
-              <div key={i}>
-                {`${key}: ${moment(infoValues[i]).format('DD.MM.YYYY')}`}
-              </div>
-            )
-          }
-          return (
-            <div key={i}>
-              {`${key}: ${infoValues[i]}`}
-            </div>
-          )
-        })}
-      </div>
-    )
+    return <Details c={c} />
   }
 
   const sortCountries = (data) => {
     if (data && data.Countries && data.Countries) {
-      // console.log(data.sort((a, b) => b.NewConfirmed - a.NewConfirmed))
       return data.Countries
         .slice(0, 15)
         .sort((a, b) => b.NewConfirmed - a.NewConfirmed)
@@ -48,15 +27,13 @@ const Home = (props) => {
                 setInfo(c)
               }}
             >
-              {c.Country}
+              {i + 1}. {c.Country}
             </div>
           )
         })
     }
     return null
   }
-
-
   return (
     <div className='home-main-container'>
       <RoundedButton
@@ -67,7 +44,9 @@ const Home = (props) => {
         }}
       />
       <div className='countries-container'>
-        Countries:
+        <div className='countries-title'>
+          Countries:
+        </div>
         {
           props.data && props.data.Countries && !sorted
             ?
@@ -79,35 +58,37 @@ const Home = (props) => {
                     key={i}
                     className='element'
                     onClick={() => {
+                      setDetails(!details)
                       setInfo(c)
                     }}
                   >
-                    {c.Country}
+                    {i + 1}. {c.Country}
                   </div>
                 )
               })
             : sortCountries(props.data)
         }
-        <RoundedButton
-          className='sort-button'
-          text='sort'
-          onClick={() => setSort(!sorted)}
-        />
+        {
+          props.data.Countries &&
+          <RoundedButton
+            className='sort-button'
+            text='sort'
+            onClick={() => setSort(!sorted)}
+          />
+        }
       </div>
-      <div>
-        {setCountryInfo(countryInfo)}
-      </div>
-
+      {details && setCountryInfo(countryInfo)}
+      <Modal />
     </div>
   )
 }
 
 const mapStateToProps = (state) => ({
-  data: state.stats.data
+  data: state.stats.data,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getStats: () => dispatch(getStats())
+  getStats: () => dispatch(getStats()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
