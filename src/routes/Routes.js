@@ -1,23 +1,20 @@
 import React, { Component } from 'react'
-import { Route, Router, Switch } from 'react-router'
+import { Route, Switch, BrowserRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { Home } from '../screens'
-import { Modal } from '../components'
 import { history } from '../config/stores'
 
 class Routes extends Component {
   render () {
     return (
-      <Router history={history}>
+      <BrowserRouter history={history}>
         <div className='dashboard-wrap'>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route exact path='/home' component={Home} />
-            <Route exact path='/home/:country' component={Modal} />
+            <Route path='/home/:country?' component={Home} />
           </Switch>
         </div>
-      </Router>
+      </BrowserRouter>
     )
   }
 }
@@ -30,4 +27,4 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Routes))
+export default connect(mapStateToProps, mapDispatchToProps)(Routes)

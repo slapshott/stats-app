@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { getStats } from '../../actions'
-import { RoundedButton, Details } from '../../components'
+import { RoundedButton, Details, Modal } from '../../components'
 import './styles.scss'
 
 const Home = (props) => {
@@ -34,6 +35,8 @@ const Home = (props) => {
     }
     return null
   }
+
+  console.log('params:: ', props.match.params.country)
   return (
     <div className='home-main-container'>
       <RoundedButton
@@ -78,6 +81,12 @@ const Home = (props) => {
         }
       </div>
       {details && setCountryInfo(countryInfo)}
+      {
+        props.match.params.country &&
+        <Modal
+          isOpen={true}
+        />
+      }
     </div>
   )
 }
@@ -90,4 +99,4 @@ const mapDispatchToProps = (dispatch) => ({
   getStats: () => dispatch(getStats()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home))

@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getStats, toggleModal, setCountry, getByCountry } from '../../actions'
+import { withRouter } from 'react-router-dom'
+import { getStats, setCountry, getByCountry } from '../../actions'
 import { RoundedButton } from '../RoundedButton'
-import { history } from '../../config/stores'
 import moment from 'moment'
 import './styles.scss'
 
@@ -59,8 +59,7 @@ const Details = (props) => {
         className='detailed-button'
         text='View more'
         onClick={() => {
-          history.push(`/home/${props.c.Country}`)
-          props.toggleModal()
+          props.history.push(`/home/${props.c.Country}`)
         }}
       />
     </div>
@@ -75,9 +74,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getStats: () => dispatch(getStats()),
-  toggleModal: () => dispatch(toggleModal()),
   setCountry: (payload) => dispatch(setCountry(payload)),
   getByCountry: (payload) => dispatch(getByCountry(payload))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Details)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Details)) 

@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import * as ModalContainer from "react-modal"
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { toggleModal, getModalData } from '../../actions'
 import { ButtonIcon } from '../../components'
-import { history } from '../../config/stores'
 import "./styles.scss"
 
 class Modal extends Component {
@@ -58,7 +58,7 @@ class Modal extends Component {
 
     return (
       <ModalContainer
-        isOpen={this.props.match && this.props.match.params.country ? true : false}
+        isOpen={this.props.isOpen}
         style={customStyles}
         ariaHideApp={false}
       >
@@ -80,7 +80,7 @@ class Modal extends Component {
             <ButtonIcon
               className='button-close'
               name='cancel'
-              onClick={() => history.push('/')}
+              onClick={() => this.props.history.push('/')}
             />
           </div>
         </div>
@@ -100,4 +100,4 @@ const mapDispatchToProps = (dispatch) => ({
   getModalData: (payload) => dispatch(getModalData(payload))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal))
