@@ -16,11 +16,15 @@ class Modal extends Component {
       let infoKeys = Object.keys(this.props.modalData)
       let infoValues = Object.values(this.props.modalData)
       return infoKeys.map((key, i) => {
+        if (infoValues[i] === '') {
+          return null
+        }
         return (
           <div
             className='element'
             key={i}>
-            {`${key}: ${infoValues[i]}`}
+            <span className='info-key'>{`${key}:`}</span>
+            <span className='info-value'>{infoValues[i]}</span>
           </div>
         )
       })
