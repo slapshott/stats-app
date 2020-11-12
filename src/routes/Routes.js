@@ -3,7 +3,7 @@ import { Route, Router, Switch } from 'react-router'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Home } from '../screens'
-import { Details, Modal } from '../components'
+import { Modal } from '../components'
 import { history } from '../config/stores'
 
 class Routes extends Component {
@@ -16,9 +16,6 @@ class Routes extends Component {
             <Route exact path='/home' component={Home} />
             <Route exact path='/home/:country' component={Modal} />
           </Switch>
-          <Modal
-            isOpen={this.props.match.params.country !== undefined}
-          />
         </div>
       </Router>
     )

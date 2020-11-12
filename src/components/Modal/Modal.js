@@ -2,14 +2,28 @@ import React, { Component } from "react"
 import * as ModalContainer from "react-modal"
 import { connect } from 'react-redux'
 import { toggleModal, getModalData } from '../../actions'
-import { ButtonIcon, Details } from '../../components'
+import { ButtonIcon } from '../../components'
 import { history } from '../../config/stores'
 import "./styles.scss"
 
 class Modal extends Component {
-  componentDidUpdate (prevProps) {
-    if (prevProps.match && prevProps.match.params !== this.props.match.params && this.props.match.params.country) {
-      this.props.getModalData(this.props.data)
+  componentDidMount () {
+    this.props.getModalData(this.props.match.params.country)
+  }
+
+  renderCoutryDetails () {
+    if (this.props.modalData) {
+      let infoKeys = Object.keys(this.props.modalData)
+      let infoValues = Object.values(this.props.modalData)
+      return infoKeys.map((key, i) => {
+        return (
+          <div
+            className='element'
+            key={i}>
+            {`${key}: ${infoValues[i]}`}
+          </div>
+        )
+      })
     }
   }
 
@@ -40,10 +54,7 @@ class Modal extends Component {
       },
     }
 
-    // const infoKeys = Object.keys(country)
-    // const infoValues = Object.values(country)
-
-    console.log('props: ', this.props.match)
+    console.log('props: ', this.props)
 
     return (
       <ModalContainer
@@ -58,15 +69,20 @@ class Modal extends Component {
           ]}
         >
           <div className='inner-container'>
-            <Details
-              c={this.props.modalData}
+            <div>
+            </div>
+            <div className='modal-info'>
+              <div className='info-title'>
+                Country Info
+              </div>
+              {this.props.modalData && this.renderCoutryDetails()}
+            </div>
+            <ButtonIcon
+              className='button-close'
+              name='cancel'
+              onClick={() => history.push('/')}
             />
           </div>
-          <ButtonIcon
-            name='cancel'
-            onClick={() => history.push('/')}
-          />
-          Country Info
         </div>
       </ModalContainer>
     )

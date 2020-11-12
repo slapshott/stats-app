@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { getStats, toggleModal, setCountry, getByCountry } from '../../actions'
 import { RoundedButton } from '../RoundedButton'
@@ -11,22 +11,7 @@ const Details = (props) => {
 
   let infoKeys = null
   let infoValues = null
-  // if (props.match && props.match.params.name && props.data.Countries) {
-  //   const { name } = props.match.params
-  //   console.log('NAme:: ', name)
-  //   let country = {}
-  //   props.data.Countries.forEach((c, i) => {
-  //     if (name.toLowerCase() === c.Country.toLowerCase()) {
-  //       country = c
-  //       props.setCountry(c.Country)
-  //       return country
-  //     }
-  //   })
-  //   infoKeys = Object.keys(country)
-  //   infoValues = Object.values(country)
-  // } else if (props.c) {
-  //   props.setCountry(props.c)
-  // }
+
   if (props.c) {
     infoKeys = Object.keys(props.c)
     infoValues = Object.values(props.c)
@@ -76,7 +61,6 @@ const Details = (props) => {
         onClick={() => {
           history.push(`/home/${props.c.Country}`)
           props.toggleModal()
-          // console.log('props:: ', props)
         }}
       />
     </div>

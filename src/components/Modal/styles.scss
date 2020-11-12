@@ -1,3 +1,21 @@
+@import '../../vars.scss';
+
 .inner-container {
-  
+  display: flex;
+  justify-content: center;
+  .modal-info {
+    width: 100%;
+    margin: 20px 0px 20px 20px;
+    .info-title {
+      font: 20px $fonts-bold;
+      margin-bottom: 50px;
+    }
+    .element {
+      font: 16px $fonts-regular
+    }
+  }
+
+  .button-close {
+    margin: 10px
+  }
 }

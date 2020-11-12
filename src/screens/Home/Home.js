@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { getStats } from '../../actions'
-import { RoundedButton, Details, Modal } from '../../components'
+import { RoundedButton, Details } from '../../components'
 import './styles.scss'
 
 const Home = (props) => {
@@ -78,7 +78,6 @@ const Home = (props) => {
         }
       </div>
       {details && setCountryInfo(countryInfo)}
-      <Modal />
     </div>
   )
 }

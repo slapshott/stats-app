@@ -13,7 +13,6 @@ export const getStats = action$ =>
       })
         .pipe(
           map(({ response }) => {
-            console.log('response::: ', response)
             return ({ type: StatsType.GET_STATS_SUCCESS, payload: response })
           }),
           catchError(err => {

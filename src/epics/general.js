@@ -13,7 +13,6 @@ export const getModalData = action$ =>
       })
         .pipe(
           map(({ response }) => {
-            console.log('response::: ', response)
             return ({ type: GeneralTypes.GET_MODAL_DATA_SUCCESS, payload: response[0] })
           }),
           catchError(err => {
@@ -34,7 +33,6 @@ export const getCountryDetails = action$ =>
       })
         .pipe(
           map(({ response }) => {
-            console.log('response::: ', response)
             return ({ type: GeneralTypes.GET_BY_COUNTRY_SUCCESS, payload: response[0] })
           }),
           catchError(err => {

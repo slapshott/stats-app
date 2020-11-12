@@ -6,7 +6,7 @@ const ButtonIcon = (props) => {
 
   return (
     <div
-      className={className ? `icon-container ${this.props.className}` : 'icon-container'}
+      className={className ? `icon-container ${props.className}` : 'icon-container'}
       onClick={onClick}
     >
       <i
